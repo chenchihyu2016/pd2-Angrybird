@@ -6,7 +6,9 @@
 #include <QPainter>
 #include <QTransform>
 #include <QtMath>
-
+struct bodyUserData{
+    int label;
+};
 class GameItem : public QObject
 {
     Q_OBJECT

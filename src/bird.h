@@ -9,9 +9,6 @@ using namespace std;
 #define BIRD_DENSITY 10.0f
 #define BIRD_FRICTION 0.2f
 #define BIRD_RESTITUTION 0.5f
-struct bodyUserData{
-    int label;
-};
 class Bird : public GameItem
 {
 public:
@@ -22,7 +19,21 @@ public:
     double getPositionY();
     double  getVelocityX();
     double  getVelocityY();
+    void setShot(){ shot = true; }
+    bool isStop(){
+        double x2= this->getPositionX();
+        double y2= this->getPositionY();
+        if ( (x2 != 5.0 && y2 != 6.05) && (shot == true) && (x2 == previousX)&&(y2== previousY))
+                return true;
+        if( x2 != previousX ) previousX = x2;
+        if( y2 != previousY ) previousY = y2;
+        return false;
+    }
+     virtual void clean();
 private:
+    bool shot;
+    double previousX;
+    double previousY;
 };
 class piggy : public Bird{
 public:
@@ -36,11 +47,6 @@ public:
         if(m_contacting == false){
             score +=100;
             m_contacting = true;
-         }
-    }
-    void  endContact(){
-        if(m_contacting == true ){
-            m_contacting = false;
          }
     }
     bool m_contacting ;
@@ -67,6 +73,7 @@ public:
             scene2 = scene;
     }
     virtual void specialFunc();
+    virtual void clean();
 private:
     blueBird *copyOne;
     blueBird *copyTwo;

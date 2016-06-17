@@ -7,17 +7,17 @@
 class Land : public GameItem
 {
 public:
-    Land(float x, float y, float w, float h, QPixmap pixmap, b2World *world, QGraphicsScene *scene);
+    Land(float x, float y, float w, float h, QPixmap pixmap, b2World *world, QGraphicsScene *scene,int input);
 };
 class Box : public Land{
 public:
-    Box(float x, float y, float w, float h, QPixmap pixmap, b2World *world, QGraphicsScene *scene):
-        Land(x,y,w,h,pixmap,world,scene){}
+    Box(float x, float y, float w, float h, QPixmap pixmap, b2World *world, QGraphicsScene *scene,int input):
+        Land(x,y,w,h,pixmap,world,scene,input){}
 };
 class shooter : public Land{
 public:
-    shooter(float x, float y, float w, float h, QPixmap pixmap, b2World *world, QGraphicsScene *scene):
-        Land(x,y,w,h,pixmap,world,scene){}
+    shooter(float x, float y, float w, float h, QPixmap pixmap, b2World *world, QGraphicsScene *scene,int input):
+        Land(x,y,w,h,pixmap,world,scene,input){}
 };
 
 #endif // LAND_H

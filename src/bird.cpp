@@ -3,6 +3,9 @@
 using namespace std;
 Bird::Bird(float x, float y, float radius, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene, int input):GameItem(world)
 {
+    shot = false;
+    previousX = 5.0;
+    previousY = 6.05;
     // Set pixmap
     g_pixmap.setPixmap(pixmap);
     g_pixmap.setTransformOriginPoint(g_pixmap.boundingRect().width()/2,g_pixmap.boundingRect().height()/2);
@@ -49,10 +52,13 @@ double Bird::getVelocityY(){
     b2Vec2 vel = g_body->GetLinearVelocity();
     return vel.y;
 }
+void Bird::clean(){}
 void piggy::specialFunc(){}
 void redBird::specialFunc(){}
 void whiteBird::specialFunc(){
-    this->setLinearVelocity(b2Vec2(40,0));
+    double currentVelocityX = this->getVelocityX();
+    double currentVelocityY = this->getVelocityY();
+    setLinearVelocity(b2Vec2(currentVelocityX+20,currentVelocityY));
 }
 void blueBird::specialFunc(){
     double x =  this->getPositionX();
@@ -64,7 +70,12 @@ void blueBird::specialFunc(){
     copyOne->setLinearVelocity(b2Vec2(currentVelocityX,currentVelocityY+3));
     copyTwo->setLinearVelocity(b2Vec2(currentVelocityX,currentVelocityY-3));
 }
+void blueBird::clean(){
+    delete copyOne;
+    delete copyTwo;
+}
 void blackBird::specialFunc(){
+    this->g_body->SetGravityScale(0.1);
 }
 thing::thing(float x, float y, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene,int input):GameItem(world)
 {
