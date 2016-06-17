@@ -65,8 +65,6 @@ void blueBird::specialFunc(){
     copyTwo->setLinearVelocity(b2Vec2(currentVelocityX,currentVelocityY-3));
 }
 void blackBird::specialFunc(){
-
-
 }
 thing::thing(float x, float y, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene,int input):GameItem(world)
 {

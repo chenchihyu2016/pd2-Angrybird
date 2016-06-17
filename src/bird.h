@@ -1,6 +1,5 @@
 #ifndef BIRD_H
 #define BIRD_H
-
 #include <gameitem.h>
 #include <QPixmap>
 #include <QGraphicsScene>
@@ -13,7 +12,6 @@ using namespace std;
 struct bodyUserData{
     int label;
 };
-
 class Bird : public GameItem
 {
 public:
@@ -41,8 +39,9 @@ public:
          }
     }
     void  endContact(){
-        if(m_contacting == true )
+        if(m_contacting == true ){
             m_contacting = false;
+         }
     }
     bool m_contacting ;
     int score;
@@ -82,13 +81,11 @@ public:
     virtual void specialFunc();
 };
 #endif // BIRD_H
-
 #ifndef BOX_H
 #define BOX_H
 #define BOX_DENSITY 10.0f
 #define BOX_FRICTION 0.1f
 #define BOX_RESTITUTION 0.35f
-
 class thing : public GameItem
 {
 public:
