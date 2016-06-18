@@ -1,7 +1,7 @@
 #ifndef LAND_H
 #define LAND_H
 
-#include <gameitem.h>
+#include "gameitem.h"
 #include <QGraphicsScene>
 class Land : public GameItem
 {

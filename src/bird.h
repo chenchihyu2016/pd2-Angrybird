@@ -1,6 +1,6 @@
 #ifndef BIRD_H
 #define BIRD_H
-#include <gameitem.h>
+#include "gameitem.h"
 #include <QPixmap>
 #include <QGraphicsScene>
 #include <QTimer>

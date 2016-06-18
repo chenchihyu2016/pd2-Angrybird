@@ -1,6 +1,6 @@
 #ifndef BOXANDSHOOTER_H
 #define BOXANDSHOOTER_H
-#include <land.h>
+#include "land.h"
 #include <QPixmap>
 #include <QGraphicsScene>
 #include <QTimer>

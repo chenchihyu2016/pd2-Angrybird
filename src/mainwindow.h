@@ -9,13 +9,13 @@
 #include <Box2D/Box2D.h>
 #include <QMouseEvent>
 #include <iostream>
-#include <gameitem.h>
-#include <land.h>
-#include <bird.h>
+#include "gameitem.h"
+#include "land.h"
+#include "bird.h"
 #include <QGraphicsTextItem>
-#include <contactListener.h>
-#include <boxes.h>
-#include<wallAndShooter.h>
+#include "contactListener.h"
+#include "boxes.h"
+#include "wallAndShooter.h"
 using namespace std;
 
 namespace Ui {

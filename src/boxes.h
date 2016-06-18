@@ -3,7 +3,7 @@
 #define BOX_DENSITY 10.0f
 #define BOX_FRICTION 0.1f
 #define BOX_RESTITUTION 0.35f
-#include <gameitem.h>
+#include "gameitem.h"
 #include <QPixmap>
 #include <QGraphicsScene>
 #include <QTimer>
