@@ -11,12 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     // Enable the event Filter
     qApp->installEventFilter(this);
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 void MainWindow::showEvent(QShowEvent *)
 {
     // Setting the QGraphicsScene
@@ -49,7 +47,7 @@ void MainWindow::showEvent(QShowEvent *)
     // Create bird (You can edit here)
     current = new redBird(5.0f,8.55f,0.27f,&timer,QPixmap(":/bird.png").scaled(height()/9.0,height()/9.0),world,scene,1);
     pig = new  piggy(29.5f,4.5f,0.495f,&timer,QPixmap(":/greenPigs.png").scaled(height()/9.0,height()/8.0),world,scene,0);
-    pig2 = new  piggy(26.5f,13.0f,0.495f,&timer,QPixmap(":/greenPigs.png").scaled(height()/9.0,height()/8.0),world,scene,3);
+    pig2 = new  piggy(27.0f,13.2f,0.495f,&timer,QPixmap(":/greenPigs.png").scaled(height()/9.0,height()/8.0),world,scene,3);
     // Setting the contactListener
     myContactListenerInstance = new MyContactListener(pig,pig2);
     world->SetContactListener(myContactListenerInstance);
@@ -119,18 +117,16 @@ void MainWindow::tick()
     word->setPlainText(QString::number(myContactListenerInstance->score) );
     scene->update();
     if(current->isStop()){
+        current->clean();
+        delete current;
         switch(number){
         case 1 :
-            delete current;
             current = new blueBird(5.0f,8.55f,0.25f,&timer,QPixmap(":/blueBird.png").scaled(height()/8.5,height()/9.0),world,scene,1);
              break;
         case 2:
-            current->clean();
-            delete current;
             current = new whiteBird(5.0f,8.55f,0.35f,&timer,QPixmap(":/whiteBird.png").scaled(height()/9.0,height()/9.0),world,scene,1);
             break;
         case 3:
-            delete current;
             current = new blackBird(5.0f,8.55f,0.25f,&timer,QPixmap(":/blackBird.png").scaled(height()/8.5,height()/9.0),world,scene,1);
             break;
         }

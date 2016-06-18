@@ -10,7 +10,7 @@ Box::Box(float x, float y, QTimer *timer, QPixmap pixmap, b2World *world, QGraph
     bodydef.bullet = true;
     bodydef.position.Set(x,y);
     bodyUserData* myStruct = new bodyUserData;
-        myStruct->label = input;
+    myStruct->label = input;
     bodydef.userData = myStruct;
     g_body = world->CreateBody(&bodydef);
     b2PolygonShape bodyshape;
