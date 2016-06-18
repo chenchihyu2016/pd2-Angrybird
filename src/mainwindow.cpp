@@ -1,3 +1,4 @@
+//2016/06/18
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
