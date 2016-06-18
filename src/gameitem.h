@@ -24,9 +24,6 @@ public:
 public slots:
     void paint();
     // TODO virtual void collide();
-
-private:
-
 };
 
 #endif // GAMEITEM_H

@@ -88,15 +88,5 @@ public:
     virtual void specialFunc();
 };
 #endif // BIRD_H
-#ifndef BOX_H
-#define BOX_H
-#define BOX_DENSITY 10.0f
-#define BOX_FRICTION 0.1f
-#define BOX_RESTITUTION 0.35f
-class thing : public GameItem
-{
-public:
-    thing(float x, float y, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene,int input);
-};
-#endif // BIRD_H
+
 

@@ -1,5 +1,4 @@
 #include "land.h"
-
 Land::Land(float x, float y, float w, float h, QPixmap pixmap, b2World *world, QGraphicsScene *scene,int input):GameItem(world)
 {
     // Set pixmap
