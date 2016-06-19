@@ -119,7 +119,7 @@ void MainWindow::tick()
     word->setPlainText(QString::number(contactListenerPtr->score) );
     scene->update();
     if(current->isStop()){
-        number = rand()%3+1;
+        //number = rand()%3+1;
         current->clean();
         delete current;
         if (number == 1)
@@ -128,6 +128,9 @@ void MainWindow::tick()
             current = new whiteBird(5.0f,8.55f,0.35f,&timer,QPixmap(":/whiteBird.png").scaled(height()/9.0,height()/9.0),world,scene,1);
         else if (number==3)
             current = new blackBird(5.0f,8.55f,0.25f,&timer,QPixmap(":/blackBird.png").scaled(height()/8.5,height()/9.0),world,scene,1);
+        number++;
+        if(number==4)
+                number=1;
         //else if(number==4)
         //    current = new redBird(5.0f,8.55f,0.27f,&timer,QPixmap(":/bird.png").scaled(height()/9.0,height()/9.0),world,scene,1);
         keyP = true;
