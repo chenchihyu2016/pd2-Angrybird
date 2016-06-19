@@ -51,7 +51,7 @@ private:
     piggy  * pig,*pig2;
     b2Fixture* GetFixtureA();
     b2Fixture* GetFixtureB();
-    MyContactListener *myContactListenerInstance;
+    contactListener *contactListenerPtr;
     QGraphicsTextItem *word;
     bool control;
     double x1,y1;

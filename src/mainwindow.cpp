@@ -1,6 +1,8 @@
 //2016/06/18
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 using namespace std;
 MainWindow::MainWindow(QWidget *parent) :
@@ -49,13 +51,13 @@ void MainWindow::showEvent(QShowEvent *)
     pig = new  piggy(29.5f,4.5f,0.495f,&timer,QPixmap(":/greenPigs.png").scaled(height()/9.0,height()/8.0),world,scene,0);
     pig2 = new  piggy(27.0f,13.2f,0.495f,&timer,QPixmap(":/greenPigs.png").scaled(height()/9.0,height()/8.0),world,scene,3);
     // Setting the contactListener
-    myContactListenerInstance = new MyContactListener(pig,pig2);
-    world->SetContactListener(myContactListenerInstance);
-    // Setting the new score, and it's defined in class myContactListenerInstance
-    word = new QGraphicsTextItem;
+    contactListenerPtr = new contactListener(pig,pig2);
+    world->SetContactListener(contactListenerPtr);
+    // Setting the new score, and it's defined in class contactListenerPtr
     //set the score initially
+    word = new QGraphicsTextItem;
     word->setPos(800,80);
-    word->setPlainText(QString::number(myContactListenerInstance->score));
+    word->setPlainText(QString::number(contactListenerPtr->score));
     scene->addItem(word);
     // Timer
     connect(&timer,SIGNAL(timeout()),this,SLOT(tick()));
@@ -101,7 +103,7 @@ bool MainWindow::eventFilter(QObject *, QEvent *event)
     return false;
 }
 void MainWindow::keyPressEvent(QKeyEvent* event){
-    if((event->key() == Qt::Key_D||event->key() == Qt::Key_S)&&(keyP == true)){
+    if((event->key() == Qt::Key_D||event->key() == Qt::Key_S)&&(keyP == true) ){
             current->specialFunc();
             keyP = false;
      }
@@ -114,23 +116,20 @@ void MainWindow::closeEvent(QCloseEvent *)
 void MainWindow::tick()
 {
     world->Step(1.0/60.0,6,2);
-    word->setPlainText(QString::number(myContactListenerInstance->score) );
+    word->setPlainText(QString::number(contactListenerPtr->score) );
     scene->update();
     if(current->isStop()){
+        number = rand()%4+1;
         current->clean();
         delete current;
-        switch(number){
-        case 1 :
+        if(number == 1)
             current = new blueBird(5.0f,8.55f,0.25f,&timer,QPixmap(":/blueBird.png").scaled(height()/8.5,height()/9.0),world,scene,1);
-             break;
-        case 2:
+        else if(number == 2)
             current = new whiteBird(5.0f,8.55f,0.35f,&timer,QPixmap(":/whiteBird.png").scaled(height()/9.0,height()/9.0),world,scene,1);
-            break;
-        case 3:
+        else if(number==3)
             current = new blackBird(5.0f,8.55f,0.25f,&timer,QPixmap(":/blackBird.png").scaled(height()/8.5,height()/9.0),world,scene,1);
-            break;
-        }
-        number++;
+        //else if(number==4)
+        //    current = new redBird(5.0f,8.55f,0.27f,&timer,QPixmap(":/bird.png").scaled(height()/9.0,height()/9.0),world,scene,1);
         keyP = true;
     }
     if( pig != 0 ){

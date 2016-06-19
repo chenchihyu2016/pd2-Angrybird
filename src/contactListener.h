@@ -1,9 +1,9 @@
 #ifndef CONTACTLISTENER_H
 #define CONTACTLISTENER_H
-class MyContactListener : public b2ContactListener
+class contactListener : public b2ContactListener
   {
 public:
-    MyContactListener(piggy* Pig,piggy* Pig2):pig(Pig),pig2(Pig2){
+    contactListener(piggy* Pig,piggy* Pig2):pig(Pig),pig2(Pig2){
         score = 0;
     }
     void BeginContact(b2Contact* contact) {

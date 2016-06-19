@@ -17,7 +17,7 @@ Bird::Bird(float x, float y, float radius, QTimer *timer, QPixmap pixmap, b2Worl
     bodydef.position.Set(x,y);
     //set individual label for collision
     bodyUserData* myStruct = new bodyUserData;
-     myStruct->label = input;
+    myStruct->label = input;
     bodydef.userData = myStruct;
     //end of label for collision
     g_body = world->CreateBody(&bodydef);
